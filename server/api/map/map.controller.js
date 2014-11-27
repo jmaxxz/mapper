@@ -20,12 +20,13 @@ blobService.createContainerIfNotExists(container, {}, function(error, result, re
 });
 
 exports.show = function(req, res) {
-  blobService.getBlobProperties(container, req.params.id, function (error, blobInfo) {
+  var id = decodeURIComponent(req.params.id);
+  blobService.getBlobProperties(container, id, function (error, blobInfo) {
     if(error) {
       res.status(404).json({excuse:'Map not found'});
     } else {
       res.header('content-type', 'application/json');
-      blobService.getBlobToStream(container, req.params.id, res, function () { });
+      blobService.getBlobToStream(container, id, res, function () { });
     }
   });
 };
