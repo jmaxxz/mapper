@@ -417,6 +417,12 @@ module.exports = function (grunt) {
           remote: 'openshift',
           branch: 'master'
         }
+      },
+      azure: {
+        option:{
+          remote: 'azure',
+          branch: 'master'
+        }
       }
     },
 

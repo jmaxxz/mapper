@@ -13,6 +13,8 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
+      <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
+      <link rel="stylesheet" href="bower_components/leaflet-sidebar/src/L.Control.Sidebar.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -21,13 +23,23 @@
       <!-- endinjector -->
     <!-- endbuild -->
   </head>
-  <body ng-app="mapperApp">
+  <body>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <div ng-view=""></div>
+    <div id="map"></div>
+    <div hidden>
+      <div id="sidebar">
+        <h2>Upload Map</h2>
+        <form>
+          <label>Geojson</label>
+          <input type="file" name="geojson">
+          <label>Enable clustering</label>
+          <input type="checkbox" name="cluster">
+        </form>
+      </div>
+    </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
@@ -47,23 +59,18 @@
     <!-- build:js({client,node_modules}) app/vendor.js -->
       <!-- bower:js -->
       <script src="bower_components/jquery/dist/jquery.js"></script>
-      <script src="bower_components/angular/angular.js"></script>
-      <script src="bower_components/angular-resource/angular-resource.js"></script>
-      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-      <script src="bower_components/angular-route/angular-route.js"></script>
-      <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+      <script src="bower_components/leaflet/dist/leaflet.js"></script>
+      <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
+      <script src="bower_components/L.EasyButton/easy-button.js"></script>
+      <script src="bower_components/leaflet-sidebar/src/L.Control.Sidebar.js"></script>
+      <script src="bower_components/signals/dist/signals.js"></script>
+      <script src="bower_components/crossroads/dist/crossroads.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,client}) app/app.js -->
         <script src="app/app.js"></script>
-          <!-- injector:js -->
-          <script src="app/main/main.js"></script>
-          <script src="components/modal/modal.js"></script>
-          <script src="components/navbar/navbar.js"></script>
-          <!-- endinjector -->
         <!-- endbuild -->
 </body>
 </html>
